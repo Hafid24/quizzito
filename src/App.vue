@@ -1,16 +1,24 @@
 <template>
-  <div id="app">
-    <div v-for="q in data">{{q}}</div>
+  <div id="app" class="flex flex-column">
+    <div>
+    </div>
+    <div>
+    </div>
   </div>
 </template>
 
 <script>
 import Indicator from './components/Indicator.vue'
+import Quiz from './components/Quiz.vue'
 import Data from './arabicData.json'
 
 
 export default {
   name: 'app',
+  components: {
+    Indicator,
+    Quiz
+  },
   data () {
     return {
       data: []
@@ -18,9 +26,7 @@ export default {
   },
  methods:{
     init(){
-      this.data.push('jhg');
       this.data = Data;
-      console.log(this.data);
     }
   },
   mounted(){
@@ -39,24 +45,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 60px; 
 }
 
-h1, h2 {
-  font-weight: normal;
+.flex {
+  display: flex
 }
-
-ul {
-  list-style-type: none;
-  padding: 0;
+.flex-column  { 
+  flex-direction: column 
 }
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.flex-row { 
+  flex-direction: row 
 }
 </style>

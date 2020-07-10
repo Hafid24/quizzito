@@ -1,5 +1,5 @@
 <template>
-  <div class="indicatorContainer flex flex-column"/>
+  <div class="indicatorContainer flex flex-row">
     <div class="flex">
       <div class="progress-bar"/>      
     </div>
@@ -8,10 +8,15 @@
 
 <script>
 export default {
-  name: 'indicator',
+  name: 'Indicator',
   data () {
     return {
       position: 0,
+    }
+  },
+  props: {
+    artists: {
+      type: Number
     }
   },
   methods:{
