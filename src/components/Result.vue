@@ -64,6 +64,7 @@ export default {
   border-color: #ebebed;
   box-shadow: 0 0 5px rgba(38, 38, 76, 0.05);
   border: 1px solid #ced4da;
+  text-align: right;
 }
 .input:focus {
   outline-offset: -2px;
