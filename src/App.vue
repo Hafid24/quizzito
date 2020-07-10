@@ -1,12 +1,9 @@
 <template>
-  <div id="app" class="flex flex-row flex-justify-center">
+  <div v-if="!showScore" id="app" class="flex flex-row flex-justify-center">
     <div class="flex">
-      <div v-if="!showScore" class="flex flex-column align-center" >
-        <Indicator :step="next" :maxSteps="data.length"/>
+      <div class="flex flex-column align-center" >
+        <Indicator :step="next" :maxSteps="maxSteps" :right="right"/>
         <Quiz :submit="submit" :question="question" :styles="quizContainerstyles"/>
-      </div>
-      <div v-else class="flex" v-bind:style="quizContainerstyles">
-        {{score}}
       </div>
     </div>
     <div class="flex card" v-bind:style="bookContainerstyles" >
@@ -17,11 +14,15 @@
       </div>
     </div>
   </div>
+  <div id="app" v-else class="flex  flex-justify-center">
+    <Result :result="result"/>
+  </div>
 </template>
 
 <script>
 import Indicator from './components/Indicator.vue'
 import Quiz from './components/Quiz.vue'
+import Result from './components/Result.vue'
 import Data from './arabicData.json'
 
 
@@ -29,7 +30,8 @@ export default {
   name: 'app',
   components: {
     Indicator,
-    Quiz
+    Quiz,
+    Result
   },
   data () {
     return {
@@ -37,7 +39,10 @@ export default {
       question: {},
       next: 0,
       score: 0,
+      result: 0,
+      maxSteps: 0,
       showScore: false,
+      right: false,
       quizContainerstyles: {
 		    'width': '450px'
 	    },
@@ -49,13 +54,19 @@ export default {
  methods:{
     init(){
       this.data = Data;
-      this.question = this.data[this.next]
+      this.question = this.data[this.next];
+      this.maxSteps = this.data.length;
+
     },
     submit(rightAnswer){
       if(rightAnswer) {
         this.score +=1 ;
+        this.result = Math.round(this.score/this.maxSteps*100);
+        this.right = true;
+      } else {
+        this.right = false;
       }
-      if(this.next < (this.data.length - 1 )) {
+      if(this.next < (this.maxSteps - 1 )) {
         this.next += 1;
         this.question = this.data[this.next];
       } else {
@@ -63,7 +74,7 @@ export default {
       }
     }
   },
-    mounted(){
+    beforeMount(){
     this.init()
     }
 }
