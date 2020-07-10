@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="flex flex-row flex-justify-center">
     <div class="flex">
-      <div v-if="!showScore" class="flex flex-column" v-bind:style="quizContainerstyles" >
-        <Indicator />
-        <Quiz :submit="submit" :question="question"/>
+      <div v-if="!showScore" class="flex flex-column align-center" >
+        <Indicator :step="next" :maxSteps="data.length"/>
+        <Quiz :submit="submit" :question="question" :styles="quizContainerstyles"/>
       </div>
       <div v-else class="flex" v-bind:style="quizContainerstyles">
         {{score}}
@@ -11,7 +11,8 @@
     </div>
     <div class="flex card" v-bind:style="bookContainerstyles" >
       <div class="flex flex-column ">
-        <span class="text-gray mt-1">أنت تلعب الآن ...</span>
+        <span class="text-gray mt-1">...أنت تلعب الآن</span>
+        <h4 class="mt-1"> الثعلب والأسد</h4>
          <img :src="'../src/assets/lion.jpg'">
       </div>
     </div>
@@ -54,7 +55,6 @@ export default {
       if(rightAnswer) {
         this.score +=1 ;
       }
-      console.log(this.score);
       if(this.next < (this.data.length - 1 )) {
         this.next += 1;
         this.question = this.data[this.next];
@@ -90,6 +90,9 @@ export default {
   transition: all 0.3s ease;
 }
 
+.align-center {
+  align-items: center;
+}
 .card:hover {
   margin-top: -5px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);

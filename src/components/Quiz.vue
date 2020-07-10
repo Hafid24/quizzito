@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-column">
+  <div class="flex flex-column" v-bind:style="styles">
     <div class="question flex flex-justify-center" >
       {{question.question}}
     </div>
@@ -29,7 +29,7 @@ export default {
       submiting: false,
     }
   },
-  props: ['question', 'submit'],
+  props: ['question', 'submit', 'styles'],
   watch: { 
     question: function(newVal, oldVal) { 
       if(newVal != oldVal){
@@ -44,12 +44,12 @@ export default {
     checkAnswer(){
       if(this.answerChecked != -1) {
         this.submiting = true;
-        setTimeout(() =>{ this.submit( this.rightAnswer); }, 2000);
+        setTimeout(() =>{ this.submit( this.rightAnswer); }, 500);
       }
     },
     select(event){
       const targetId = event.currentTarget.id;
-      this.selections = this.selections.map((option,index) => (index + 1) == targetId ? (() => { this.answerChecked = index; console.log(this.answerChecked, index, targetId);  return !option; })() : false);
+      this.selections = this.selections.map((option,index) => (index + 1) == targetId ? (() => { this.answerChecked = index; return !option; })() : false);
       this.rightAnswer = this.question.answer == targetId?  targetId : false;
     },
     isWrongAnswer(id) {
