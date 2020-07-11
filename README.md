@@ -33,7 +33,7 @@ npm run build
 
 ### 3.b- Cloning the Layout based on Flexbox and Style of the game.
 
-All the the components had no functionality at this point.
+-All the the components had no functionality at this point.
 
 ## 4- Adding functionality
 
