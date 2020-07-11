@@ -31,7 +31,7 @@ npm run build
 - src/components/Indicator.vue to keep track of the the progress of the game
 - src/components/Result.vue to show score and ask the player to give his contacts (name)
 
-### 3.b- Cloning the Layout based on Flex Box and Style of the game.
+### 3.b- Cloning the Layout based on Flexbox and Style of the game.
 
 All the the components had no functionality at this point.
 
