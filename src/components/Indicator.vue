@@ -3,7 +3,7 @@
     <div class="flex flex-1 flex-column">
       <div class="flex flex-row space-arround">
        <div v-for="item in maxSteps">
-         <img :src="'../../src/assets/' + (((maxSteps -item + 1) > step ) ? 'emptyemoji.png': (getEmoji([...prevRight].reverse()[prevRight.length - maxSteps + item - 1] == 'true' ,(step + 1) > ( maxSteps -item ))  ?  'happyemoji.png' : 'sademoji.png')) " class="img-small">
+         <img :src="'../../src/assets/' + (((maxSteps -item + 1) > step ) ? 'emptyemoji.png': (getEmoji([...prevRight].reverse()[prevRight.length - maxSteps + item - 1] == 'true' ,(step) > ( maxSteps -item ))  ?  'happyemoji.png' : 'sademoji.png')) " class="img-small">
        </div>
       </div>
       <div class="progress-bar">
