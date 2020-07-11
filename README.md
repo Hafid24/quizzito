@@ -18,7 +18,7 @@ npm run build
 ```
 ## 2- Migrating from React.Js to Vue.js
 
-### 2.a- Getiing familiare with Templates in Vue.js
+### 2.a- Getting familiare with Templates in Vue.js
 ### 2.b- Getting used to Data, Props and and life cycle methods.
 ### 3.c- Studying how can we use intenal/external components
 
