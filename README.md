@@ -1,4 +1,4 @@
-# quizito
+# quizzito
 
 > A Vue.js game to encourage kids reading books
 
